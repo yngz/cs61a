@@ -11,13 +11,12 @@ test = {
           ...     print(s0, s1)
           ...     return echo
           >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(3), goal=4, say=echo)
-          d7882c94106188a2f424c5383b507923
-          b706c6a1e63c19ed82e4eb95fc6ba1cf
-          519a2e7c2e74bf29cb97b470402b22a2
-          # locked
+          3 0
+          3 3
+          6 3
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -28,14 +27,13 @@ test = {
           >>> strat0 = lambda score, opponent: 1 - opponent // 10
           >>> strat1 = always_roll(3)
           >>> s0, s1 = play(strat0, strat1, dice=make_test_dice(4, 2, 4), goal=15, say=echo)
-          f4d41f4e29a08f003e0a9a5473c61d5e
-          1ebc4dec05cd236c7d1cbd3262366e5c
-          0b137db03688ea332eae4fdd2fd79c46
-          c380d18c21fcae2eb82e2dc123ca21e1
-          # locked
+          4 0
+          4 10
+          6 10
+          6 20
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -48,14 +46,13 @@ test = {
           ...     print(s0, s1)
           ...     return total
           >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(2, 3), goal=5, say=echo)
-          accd0f5c57e0f3fad13791aaecafc38b
-          26f5762c932a578994ea1c8fc7fa6c02
-          e3bcdb2715b868db45692ec2a5971a84
-          70e71b420a966665c548a3bb2cb30d7d
-          # locked
+          2 0
+          5
+          4 3
+          10
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -78,12 +75,11 @@ test = {
           ...     print('**', s1)
           ...     return echo_1
           >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(2), goal=1, say=both(echo_0, echo_1))
-          3f321d5ce997d2f3989685f56de8bdce
-          4a64fe964dc771a219ed773c3a146c75
-          # locked
+          * 2
+          ** 0
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
