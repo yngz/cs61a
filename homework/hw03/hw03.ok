@@ -1,0 +1,22 @@
+{
+    "name": "Homework 3",
+    "endpoint": "cal/cs61a/fa18/hw03",
+    "src": [
+        "hw03.py"
+    ],
+    "tests": {
+        "hw03.py":  "doctest"
+    },
+    "default_tests": [
+        "has_seven",
+        "pingpong",
+        "filtered_accumulate"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
