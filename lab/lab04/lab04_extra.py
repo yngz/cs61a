@@ -50,7 +50,7 @@ def create_row(size):
     >>> create_row(5)
     ['-', '-', '-', '-', '-']
     """
-    "*** YOUR CODE HERE ***"
+    return ['-'] * size
 
 
 def create_board(rows, columns):
@@ -59,7 +59,7 @@ def create_board(rows, columns):
     >>> create_board(3, 5)
     [['-', '-', '-', '-', '-'], ['-', '-', '-', '-', '-'], ['-', '-', '-', '-', '-']]
     """
-    "*** YOUR CODE HERE ***"
+    return [create_row(columns) for _ in range(rows)]
 
 
 def replace_elem(lst, index, elem):
@@ -74,7 +74,9 @@ def replace_elem(lst, index, elem):
     False
     """
     assert index >= 0 and index < len(lst), 'Index is out of bounds'
-    "*** YOUR CODE HERE ***"
+    new = lst[:]
+    new[index] = elem
+    return new
 
 
 def get_piece(board, row, column):
@@ -89,7 +91,7 @@ def get_piece(board, row, column):
     >>> get_piece(board, 1, 1)
     '-'
     """
-    "*** YOUR CODE HERE ***"
+    return board[row][column]
 
 
 def put_piece(board, max_rows, column, player):
@@ -112,7 +114,14 @@ def put_piece(board, max_rows, column, player):
     >>> row
     -1
     """
-    "*** YOUR CODE HERE ***"
+    row_index = -1
+    for row in range(max_rows):
+        if get_piece(board, row, column) == '-':
+            row_index += 1
+    if row_index != -1:
+        new_row = replace_elem(board[row_index], column, player)
+        board = replace_elem(board, row_index, new_row)
+    return row_index, board
 
 
 def make_move(board, max_rows, max_cols, col, player):
@@ -140,7 +149,9 @@ def make_move(board, max_rows, max_cols, col, player):
     >>> row
     -1
     """
-    "*** YOUR CODE HERE ***"
+    if col not in range(max_cols):
+        return -1, board
+    return put_piece(board, max_rows, col, player)
 
 def print_board(board, max_rows, max_cols):
     """Prints the board. Row 0 is at the top, and column 0 at the far left.
@@ -155,7 +166,8 @@ def print_board(board, max_rows, max_cols):
     - -
     X -
     """
-    "*** YOUR CODE HERE ***"
+    for row in board:
+        print(' '.join(row))
 
 def check_win_row(board, max_rows, max_cols, num_connect, row, player):
     """ Returns True if the given player has a horizontal win
@@ -207,7 +219,7 @@ def check_win_column(board, max_rows, max_cols, num_connect, col, player):
     "*** YOUR CODE HERE ***"
 
 def check_win(board, max_rows, max_cols, num_connect, row, col, player):
-    """Returns True if the given player has any kind of win passing through 
+    """Returns True if the given player has any kind of win passing through
     (row, col), and False otherwise.
 
     >>> rows, columns, num_connect = 2, 2, 2
