@@ -18,6 +18,13 @@ def flatten(lst):
     first = flatten(lst[0]) if type(lst[0]) == list else [lst[0]]
     rest = flatten(lst[1:]) if lst[1:] else lst[1:]
     return first + rest
+    """
+    Use the sum(iterable[, start]) trick from Wednesday's video lecture:
+    if type(lst) != list:
+        return [lst]
+    return sum([flatten(e) for e in lst], [])
+    """
+
 
 # Q7
 def merge(lst1, lst2):
@@ -166,8 +173,12 @@ def print_board(board, max_rows, max_cols):
     - -
     X -
     """
-    for row in board:
-        print(' '.join(row))
+    for row in range(max_rows):
+        to_print = ''
+        for col in range(max_cols):
+            to_print += get_piece(board, row, col) + ' '
+        to_print = to_print.strip()
+        print(to_print)
 
 def check_win_row(board, max_rows, max_cols, num_connect, row, player):
     """ Returns True if the given player has a horizontal win
@@ -191,7 +202,10 @@ def check_win_row(board, max_rows, max_cols, num_connect, row, player):
     >>> check_win_row(board, rows, columns, num_connect, 3, 'O')   # We only detect wins for the given player
     False
     """
-    "*** YOUR CODE HERE ***"
+    concat = ''
+    for col in range(max_cols):
+        concat += get_piece(board, row, col)
+    return player * num_connect in concat
 
 def check_win_column(board, max_rows, max_cols, num_connect, col, player):
     """ Returns True if the given player has a vertical win in the given column,
@@ -216,7 +230,10 @@ def check_win_column(board, max_rows, max_cols, num_connect, col, player):
     >>> check_win_column(board, rows, columns, num_connect, 1, 'X')
     False
     """
-    "*** YOUR CODE HERE ***"
+    concat = ''
+    for row in range(max_rows):
+        concat += get_piece(board, row, col)
+    return player * num_connect in concat
 
 def check_win(board, max_rows, max_cols, num_connect, row, col, player):
     """Returns True if the given player has any kind of win passing through
@@ -252,7 +269,9 @@ def check_win(board, max_rows, max_cols, num_connect, row, col, player):
     """
     diagonal_win = check_win_diagonal(board, max_rows, max_cols, num_connect,
                                       row, col, player)
-    "*** YOUR CODE HERE ***"
+    row_win = check_win_row(board, max_rows, max_cols, num_connect, row, player)
+    column_win = check_win_column(board, max_rows, max_cols, num_connect, col, player)
+    return any([diagonal_win, row_win, column_win])
 
 ###############################################################
 ### Functions for reference when solving the other problems ###
