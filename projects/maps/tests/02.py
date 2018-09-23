@@ -12,23 +12,18 @@ test = {
           ...                        ['Restaurants', 'Breakfast & Brunch'],
           ...                        1, soda_reviews)
           >>> restaurant_name(soda)
-          72915c31b7b5a29ae54d3c5fd964368f
-          # locked
+          'Soda'
           >>> restaurant_location(soda)
-          45013648009573e47bea9c4f0f933977
-          # locked
+          [127.0, 0.1]
           >>> restaurant_categories(soda)
-          b7a0d141faa2b17caf8ff9b1a32b45cf
-          # locked
+          ['Restaurants', 'Breakfast & Brunch']
           >>> restaurant_price(soda)
-          0371813f881bf637f2dca7a167d20c45
-          # locked
+          1
           >>> restaurant_ratings(soda)
-          a131ee26d99ec1bd2a9cfdf6ef591a32
-          # locked
+          [4.5, 4]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
