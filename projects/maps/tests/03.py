@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '26c0cd6d106fdf26fd85aa6de414e1ac',
+          'answer': 'pair; e.g. [1, 1]',
           'choices': [
             'number; e.g. 1',
             "restaurant; e.g. make_restaurant('A', [1, 1], ['Food'], 1, [])",
@@ -13,14 +13,14 @@ test = {
             "string of a pair; e.g. '[1, 1]'"
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           Which of the following types of values can be passed as
           an argument to distance?
           """
         },
         {
-          'answer': '11ad45795e3c3a916d2bde6489676409',
+          'answer': 'lambda x: abs(x[0] - x[1])',
           'choices': [
             'lambda x, y: pow(-x, y)',
             'lambda x, y: abs(x - y)',
@@ -28,7 +28,7 @@ test = {
             'sum'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           Consider the list l = [[4, 1], [-3, 2], [5, 0]]. Which of
           the choices below for fn would make min(l, key=fn) evaluate
@@ -44,49 +44,41 @@ test = {
         {
           'code': r"""
           >>> distance([0, 0], [3, 4]) # distance returns a float
-          05ffc04ece796bc36354d7ef3f5ecb4b
-          # locked
+          5.0
           >>> distance([6, 1], [6, 1])
-          42beece70d3b51719b1ca47780e3f5b5
-          # locked
+          0.0
           >>> distance([-2, 7], [-2, 10.5])
-          349acbd8a9d227b7776a922ce027e3d4
-          # locked
+          3.5
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           >>> find_closest([6, 1],
           ...              [[1, 5], [3, 3]])
-          56c587b685afb8be4741df4d7f3bb220
-          # locked
+          [3, 3]
           >>> find_closest([1, 6],
           ...              [[1, 5], [3, 3]])
-          71dfc270dd0cb21a153bad71eca045b9
-          # locked
+          [1, 5]
           >>> find_closest([1, 2],
           ...              [[4, 5], [0, 1], [6, 3]])
-          f703d5bd2bb0f98cd2f478f77fdcf0f4
-          # locked
+          [0, 1]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           >>> find_closest([0, 0],
           ...              [[-2, 0], [2, 0]])
-          53c0b010aa948332eccb7355b56828fd
-          # locked
+          [-2, 0]
           >>> find_closest([0, 0],
           ...              [[1000, 1000]])
-          42bc5d4535a0f39499f807f8f1e11e9d
-          # locked
+          [1000, 1000]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

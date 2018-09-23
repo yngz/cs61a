@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '2469a4d8eebd9bc17c255730129b6132',
+          'answer': 'A list of lists of restaurants',
           'choices': [
             'A list of lists of restaurants',
             'A list of restaurants',
@@ -13,18 +13,18 @@ test = {
             'A list of lists of locations'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What best describes the return value of group_by_centroid?'
         },
         {
-          'answer': '68bfc2807796d89422585a6881500e29',
+          'answer': '[5, 3]',
           'choices': [
             '[-2, 1]',
             '[0, 3]',
             '[5, 3]'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           If centroids is [[-2, 1], [0, 3], [5, 3]], with which
           centroid will the restaurant returned by
@@ -46,17 +46,14 @@ test = {
           >>> centroids = [[3, 0], [0, 4]]
           >>> groups = group_by_centroid([r1, r2, r3], centroids)
           >>> len(groups)
-          93487d35d01069da0bd3a3bfb9f1a1c0
-          # locked
+          2
           >>> [restaurant_name(r) for r in groups[0]]  # Cluster containing Sliver
-          cf1363fd97b3c829eef0cb4794ea5f1a
-          # locked
+          ['Sliver']
           >>> [restaurant_name(r) for r in groups[1]]  # Second cluster
-          9ceb763c2bedb8d868f181b94e5ef759
-          # locked
+          ['La Burrita', 'Thai Basil']
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
