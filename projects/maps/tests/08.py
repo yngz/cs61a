@@ -5,21 +5,21 @@ test = {
     {
       'cases': [
         {
-          'answer': '18f4b8f373a149983a060187fb945841',
+          'answer': 'a list of restaurants reviewed by the user',
           'choices': [
             'a list of restaurants reviewed by the user',
             'a list of all possible restaurants',
             'a list of ratings for restaurants reviewed by the user'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           In the starter code for best_predictor, what does the
           variable reviewed represent?
           """
         },
         {
-          'answer': '57185be4a8ff380785b1ba003d9a052c',
+          'answer': 'a predictor function and its r_squared value',
           'choices': [
             'a predictor function and its r_squared value',
             'a predictor function',
@@ -27,14 +27,14 @@ test = {
             'a restaurant'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           Given a user, a list of restaurants, and a feature function, what
           does find_predictor from Problem 7 return?
           """
         },
         {
-          'answer': '024884c52d8f4bd4151d48c25e66aaa5',
+          'answer': 'the predictor with the highest r_squared value',
           'choices': [
             'the predictor with the highest r_squared value',
             'the predictor with the lowest r_squared value',
@@ -42,7 +42,7 @@ test = {
             'an arbitrary predictor'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           After computing a list of [predictor, r_squared] pairs,
           which predictor should we select?

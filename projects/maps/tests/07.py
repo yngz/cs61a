@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'a9bfecde83c364e5016f8ac70d28a8b4',
+          'answer': 'takes in a restaurant and returns the predicted rating for that restaurant',
           'choices': [
             r"""
             takes in a restaurant and returns the predicted rating for that
@@ -18,14 +18,14 @@ test = {
             'returns the r_squared value'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           What does a predictor function returned by
           find_predictor do?
           """
         },
         {
-          'answer': '1120a82876dd18c5c5bce8094b70f402',
+          'answer': 'the extracted feature value for each restaurant in restaurants',
           'choices': [
             'the restaurants in restaurants',
             'the names of restaurants in restaurants',
@@ -33,11 +33,11 @@ test = {
             'the restaurants reviewed by user'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What does the list xs in the body of find_predictor represent?'
         },
         {
-          'answer': 'bd3d200adeeb6d968d5129c42ce2db73',
+          'answer': "user's ratings for the restaurants in restaurants",
           'choices': [
             'the average rating for the restaurants in restaurants',
             "user's ratings for the restaurants in restaurants",
@@ -45,7 +45,7 @@ test = {
             'the names for the restaurants in restaurants'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What does the list ys in the body of find_predictor represent?'
         }
       ],
