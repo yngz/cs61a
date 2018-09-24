@@ -12,11 +12,10 @@ test = {
           ...     make_restaurant('C', [2, -2.5],  [], 1, [make_review('C', 5)]),
           ... ]
           >>> find_centroid(cluster1) # Returns a pair of floats
-          1f18b61fc93937dd22c5b9df058e6168
-          # locked
+          [0.0, -2.5]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

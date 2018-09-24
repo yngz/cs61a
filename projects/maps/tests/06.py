@@ -5,18 +5,18 @@ test = {
     {
       'cases': [
         {
-          'answer': '25e61e13776f4f3954c449e464cebeae',
+          'answer': 'Grouping the restaurants into k clusters by location.',
           'choices': [
             'Grouping the restaurants into k clusters by location.',
             'Finding the mean rating of restaurants for k categories.',
             'Predicting the ratings for k restaurants.'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What are we using the k-means algorithm to achieve?'
         },
         {
-          'answer': '81095c5b734639c49394a8b810237e73',
+          'answer': 'Randomly initialize k centroids.',
           'choices': [
             'Randomly initialize k centroids.',
             r"""
@@ -26,11 +26,11 @@ test = {
             'Find the centroid (average position) of each cluster.'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What is the first step of the k-means algorithm?'
         },
         {
-          'answer': '83676d8202e2d92c49c7257c8833c91a',
+          'answer': 'Create a cluster for each centroid consisting of all elements closest to that centroid.',
           'choices': [
             'Randomly reassign centroids.',
             'Group restaurants by latitude.',
@@ -41,14 +41,14 @@ test = {
             'Find the centroid (average position) of each cluster.'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           After we randomly initialize k centroids, what is the first step
           of the iterative portion of the k-means algorithm?
           """
         },
         {
-          'answer': 'd9b8430affec45f9997ac976cc54f071',
+          'answer': 'Find the centroid (average position) of each cluster.',
           'choices': [
             'Randomly reassign centroids.',
             'Group restaurants by latitude.',
@@ -59,7 +59,7 @@ test = {
             'Find the centroid (average position) of each cluster.'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           What is the second step of the iterative portion of the k-means
           algorithm?
