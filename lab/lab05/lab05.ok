@@ -1,0 +1,30 @@
+{
+    "name": "Lab 5",
+    "endpoint": "cal/cs61a/fa18/lab05",
+    "src": [
+        "lab05.py",
+        "lab05_extra.py"
+    ],
+    "tests": {
+        "lab05.py:acorn_finder": "doctest",
+        "lab05.py:prune_leaves": "doctest",
+        "lab05.py:memory": "doctest",
+        "lab05_extra.py:build_successors_table": "doctest",
+        "lab05_extra.py:construct_sent": "doctest",
+        "lab05_extra.py:sprout_leaves": "doctest",
+        "lab05_extra.py:add_trees": "doctest"
+    },
+    "default_tests": [
+        "acorn_finder",
+        "prune_leaves",
+        "memory"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
