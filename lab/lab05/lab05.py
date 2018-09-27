@@ -15,7 +15,13 @@ def acorn_finder(t):
     >>> acorn_finder(numbers)
     False
     """
-    "*** YOUR CODE HERE ***"
+    if label(t) == 'acorn':
+        return True
+    else:
+        for b in branches(t):
+            if acorn_finder(b):
+                return True
+    return False
 
 # Q2
 def prune_leaves(t, vals):
@@ -42,7 +48,13 @@ def prune_leaves(t, vals):
         5
       6
     """
-    "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        if label(t) in vals:
+            return None
+        else:
+            return t
+    pruned = [prune_leaves(b, vals) for b in branches(t)]
+    return tree(label(t), [b for b in pruned if b is not None])
 
 # Q3
 def memory(n):
@@ -55,7 +67,11 @@ def memory(n):
     >>> f(lambda x: x > 5)
     True
     """
-    "*** YOUR CODE HERE ***"
+    def g(f):
+        nonlocal n
+        n = f(n)
+        return n
+    return g
 
 # Tree ADT
 def tree(label, branches=[]):
