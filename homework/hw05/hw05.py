@@ -493,12 +493,12 @@ def check_par():
     >>> lower_bound(x) != lower_bound(y) or upper_bound(x) != upper_bound(y)
     True
     """
-    r1 = interval(1, 2) # Replace this line!
-    r2 = interval(3, 4) # Replace this line!
+    r1 = interval(1, 2)
+    r2 = interval(3, 4)
     return r1, r2
 
 def multiple_references_explanation():
-    return """The multiple reference problem..."""
+    return """The multiple reference problem occurs when a variable that represents an uncertain number is referenced more than once. The more times it is repeated, the larger the error bounds."""
 
 def quadratic(x, a, b, c):
     """Return the interval that is the range of the quadratic defined by
@@ -509,4 +509,10 @@ def quadratic(x, a, b, c):
     >>> str_interval(quadratic(interval(1, 3), 2, -3, 1))
     '0 to 10'
     """
-    "*** YOUR CODE HERE ***"
+    f = lambda t: a*t*t + b*t + c
+    critical_x = -b/(2*a)
+    y1, y2, extreme_y = [f(x) for x in [lower_bound(x), upper_bound(x), critical_x]]
+    if lower_bound(x) < critical_x < upper_bound(x):
+        return interval(min(y1, y2, extreme_y), max(y1, y2, extreme_y))
+    else:
+        return interval(min(y1, y2), max(y1, y2))
