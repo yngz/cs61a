@@ -230,7 +230,10 @@ def totals_tree(m):
           3
           2
     """
-    "*** YOUR CODE HERE ***"
+    if is_weight(m):
+        return tree(size(m))
+    l, r = left(m), right(m)
+    return tree(total_weight(m), [totals_tree(end(l)), totals_tree(end(r))])
 
 # Mutable functions in Python
 
@@ -254,7 +257,11 @@ def make_counter():
     >>> c('b') + c2('b')
     5
     """
-    "*** YOUR CODE HERE ***"
+    d = {}
+    def counter(s):
+        d[s] = d.get(s, 0) + 1
+        return d[s]
+    return counter
 
 def make_fib():
     """Returns a function that returns the next Fibonacci number
@@ -275,7 +282,12 @@ def make_fib():
     >>> fib() + sum([fib2() for _ in range(5)])
     12
     """
-    "*** YOUR CODE HERE ***"
+    prev, curr, next = 1, 0, 0
+    def fib():
+        nonlocal prev, curr, next
+        prev, curr, next = prev + curr, prev, curr
+        return next
+    return fib
 
 def make_withdraw(balance, password):
     """Return a password-protected withdraw function.
@@ -305,7 +317,21 @@ def make_withdraw(balance, password):
     >>> type(w(10, 'l33t')) == str
     True
     """
-    "*** YOUR CODE HERE ***"
+    incorrect_attempts = []
+    def withdraw(amount, pw):
+        nonlocal balance
+        if len(incorrect_attempts) == 3:
+            return 'Your account is locked. Attempts: ' + str(incorrect_attempts)
+        elif pw != password:
+            incorrect_attempts.append(pw)
+            return 'Incorrect password'
+        elif amount > balance:
+            return 'Insufficient funds'
+        balance -= amount
+        return balance
+    return withdraw
+
+
 
 def make_joint(withdraw, old_password, new_password):
     """Return a password-protected withdraw function that has joint access to
@@ -345,7 +371,14 @@ def make_joint(withdraw, old_password, new_password):
     >>> make_joint(w, 'hax0r', 'hello')
     "Your account is locked. Attempts: ['my', 'secret', 'password']"
     """
-    "*** YOUR CODE HERE ***"
+    verify_old = withdraw(0, old_password)
+    if type(verify_old) == str:
+        return verify_old
+    def joint_withdraw(amount, pw):
+        if pw == new_password:
+            pw = old_password
+        return withdraw(amount, pw)
+    return joint_withdraw
 
 # Generators
 
@@ -383,7 +416,13 @@ def generate_paths(t, x):
     >>> sorted(list(path_to_2))
     [[0, 2], [0, 2, 1, 2]]
     """
-    "*** YOUR CODE HERE ***"
+    path = []
+    path.append(label(t))
+    if label(t) == x:
+        yield path
+    for b in branches(t):
+        for p in generate_paths(b, x):
+            yield path + p
 
 ###################
 # Extra Questions #
@@ -406,31 +445,33 @@ def interval(a, b):
 
 def lower_bound(x):
     """Return the lower bound of interval x."""
-    "*** YOUR CODE HERE ***"
+    return x[0]
 
 def upper_bound(x):
     """Return the upper bound of interval x."""
-    "*** YOUR CODE HERE ***"
+    return x[1]
 
 def mul_interval(x, y):
     """Return the interval that contains the product of any value in x and any
     value in y."""
-    p1 = x[0] * y[0]
-    p2 = x[0] * y[1]
-    p3 = x[1] * y[0]
-    p4 = x[1] * y[1]
-    return [min(p1, p2, p3, p4), max(p1, p2, p3, p4)]
+    p1 = lower_bound(x) * lower_bound(y)
+    p2 = lower_bound(x) * upper_bound(y)
+    p3 = upper_bound(x) * lower_bound(y)
+    p4 = upper_bound(x) * upper_bound(y)
+    return interval(min(p1, p2, p3, p4), max(p1, p2, p3, p4))
 
 def sub_interval(x, y):
     """Return the interval that contains the difference between any value in x
     and any value in y."""
-    "*** YOUR CODE HERE ***"
+    lower = lower_bound(x) - upper_bound(y)
+    upper = upper_bound(x) - lower_bound(y)
+    return interval(lower, upper)
 
 def div_interval(x, y):
     """Return the interval that contains the quotient of any value in x divided by
     any value in y. Division is implemented as the multiplication of x by the
     reciprocal of y."""
-    "*** YOUR CODE HERE ***"
+    assert not lower_bound(y) <= 0 <= upper_bound(y)
     reciprocal_y = interval(1/upper_bound(y), 1/lower_bound(y))
     return mul_interval(x, reciprocal_y)
 
@@ -452,8 +493,8 @@ def check_par():
     >>> lower_bound(x) != lower_bound(y) or upper_bound(x) != upper_bound(y)
     True
     """
-    r1 = interval(1, 1) # Replace this line!
-    r2 = interval(1, 1) # Replace this line!
+    r1 = interval(1, 2) # Replace this line!
+    r2 = interval(3, 4) # Replace this line!
     return r1, r2
 
 def multiple_references_explanation():
