@@ -572,7 +572,7 @@ class ScaryThrower(ThrowerAnt):
 
     def throw_at(self, target):
         # BEGIN Problem EC
-        if not target.scared:
+        if target and not target.scared:
             apply_effect(make_scare, target, 2)
             target.scared = True
         # END Problem EC
