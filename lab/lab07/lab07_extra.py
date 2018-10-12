@@ -17,7 +17,13 @@ def remove_all(link , value):
     >>> print(l1)
     <0 1>
     """
-    "*** YOUR CODE HERE ***"
+    if link.rest is Link.empty:
+        return Link.empty
+    elif link.rest.first == value:
+        link.rest = link.rest.rest
+        remove_all(link, value)
+    else:
+        remove_all(link.rest, value)
 
 # Q10
 def deep_map_mut(fn, link):
@@ -32,8 +38,14 @@ def deep_map_mut(fn, link):
     >>> print(link1)
     <9 <16> 25 36>
     """
-    "*** YOUR CODE HERE ***"
-
+    if link is Link.empty:
+        return Link.empty
+    elif isinstance(link.first, Link):
+        deep_map_mut(fn, link.first)
+    else:
+        link.first = fn(link.first)
+    deep_map_mut(fn, link.rest)
+        
 # Q11
 def has_cycle(link):
     """Return whether link contains a cycle.
@@ -49,7 +61,15 @@ def has_cycle(link):
     >>> has_cycle(u)
     False
     """
-    "*** YOUR CODE HERE ***"
+    def checker(l, seen=[]):
+        if l is Link.empty:
+            return False
+        if l in seen:
+            return True
+        seen.append(l)
+        return checker(l.rest)
+
+    return checker(link)
 
 def has_cycle_constant(link):
     """Return whether link contains a cycle.
@@ -62,7 +82,17 @@ def has_cycle_constant(link):
     >>> has_cycle_constant(t)
     False
     """
-    "*** YOUR CODE HERE ***"
+    if link is Link.empty:
+        return False
+    slow, fast = link, link.rest
+    while fast != Link.empty:
+        if fast.rest == Link.empty:
+            return False
+        elif fast == slow or fast.rest == slow:
+            return True
+        else:
+            slow, fast = slow.rest, fast.rest.rest
+    return False
 
 # Q12
 def reverse_other(t):
@@ -78,4 +108,13 @@ def reverse_other(t):
     >>> t
     Tree(1, [Tree(8, [Tree(3, [Tree(5), Tree(4)]), Tree(6, [Tree(7)])]), Tree(2)])
     """
-    "*** YOUR CODE HERE ***"
+    def reverse_odd(tree, odd=True):
+        if tree.is_leaf():
+            return
+        else:
+            branch_labels_reversed = [b.label for b in tree.branches][::-1]
+            for branch, label_reversed in zip(tree.branches, branch_labels_reversed):
+                if odd:
+                    branch.label = label_reversed
+                reverse_odd(branch, not odd)
+    return reverse_odd(t)

@@ -116,12 +116,6 @@ def in_order_traversal(t):
     >>> list(in_order_traversal(t))
     [4, 2, 6, 5, 7, 1, 3]
     """
-    # if len(t.branches) == 2:
-    #     yield from in_order_traversal(t.branches[0])
-    #     yield t.label
-    #     yield from in_order_traversal(t.branches[1])
-    # else:
-    #     yield t.label
     if t.is_leaf():
         yield t.label
     else:
