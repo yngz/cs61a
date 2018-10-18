@@ -27,17 +27,24 @@ class Keyboard:
     """
 
     def __init__(self, *args):
-        "*** YOUR CODE HERE ***"
+        self.buttons = {button.pos:button for button in args}
 
     def press(self, info):
         """Takes in a position of the button pressed, and
         returns that button's output"""
-        "*** YOUR CODE HERE ***"
+        button = self.buttons.get(info)
+        if not button:
+            return ''
+        button.times_pressed += 1
+        return button.key
 
     def typing(self, typing_input):
         """Takes in a list of positions of buttons pressed, and
         returns the total output"""
-        "*** YOUR CODE HERE ***"
+        output = ''
+        for pos in typing_input:
+            output += self.press(pos)
+        return output
 
 class Button:
     def __init__(self, pos, key):
@@ -75,7 +82,23 @@ def make_advanced_counter_maker():
     >>> tom_counter('global-count')
     1
     """
-    "*** YOUR CODE HERE ***"
+    global_count = 0
+    def make_advanced_counter():
+        count = 0
+        def counter(msg):
+            nonlocal global_count, count
+            if msg == 'count':
+                count += 1
+                return count
+            elif msg == 'reset':
+                count = 0
+            elif msg == 'global-count':
+                global_count += 1
+                return global_count
+            elif msg == 'global-reset':
+                global_count =0
+        return counter
+    return make_advanced_counter
 
 # Lists
 def trade(first, second):
@@ -107,9 +130,13 @@ def trade(first, second):
     """
     m, n = 1, 1
 
-    "*** YOUR CODE HERE ***"
+    while m < len(first) and n < len(second) and sum(first[:m]) != sum(second[:n]):
+        if sum(first[:m]) < sum(second[:n]):
+            m += 1
+        else:
+            n += 1
 
-    if False: # change this line!
+    if sum(first[:m]) == sum(second[:n]):
         first[:m], second[:n] = second[:n], first[:m]
         return 'Deal!'
     else:
