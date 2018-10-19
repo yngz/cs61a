@@ -166,12 +166,12 @@ def permutations(seq):
     >>> sorted(permutations("ab"))
     [['a', 'b'], ['b', 'a']]
     """
-    if ____________________:
-        yield ____________________
+    if not seq:
+        yield []
     else:
-        for perm in _____________________:
-            for _____ in ________________:
-                _________________________
+        for perm in permutations(seq[1:]):
+            for i in range(len(seq)):
+                yield perm[:i] + [seq[0]] + perm[i:]
 
 # Recursive objects
 def make_to_string(front, mid, back, empty_repr):
@@ -189,7 +189,12 @@ def make_to_string(front, mid, back, empty_repr):
     >>> jerrys_to_string(Link.empty)
     '()'
     """
-    "*** YOUR CODE HERE ***"
+    def to_str(lnk):
+        if lnk is Link.empty:
+            return empty_repr
+        else:
+            return front + str(lnk.first) + mid + to_str(lnk.rest) + back
+    return to_str
 
 def tree_map(fn, t):
     """Maps the function fn over the entries of t and returns the
@@ -222,7 +227,7 @@ def tree_map(fn, t):
           7
         8
     """
-    "*** YOUR CODE HERE ***"
+    return Tree(fn(t.label), [tree_map(fn, b) for b in t.branches])
 
 def long_paths(tree, n):
     """Return a list of all paths in tree with length at least n.
@@ -253,7 +258,13 @@ def long_paths(tree, n):
     >>> long_paths(whole, 4)
     [Link(0, Link(11, Link(12, Link(13, Link(14)))))]
     """
-    "*** YOUR CODE HERE ***"
+    paths = []
+    if n <= 0 and tree.is_leaf():
+        paths.append(Link(tree.label))
+    for b in tree.branches:
+        for path in long_paths(b, n-1):
+            paths.append(Link(tree.label, path))
+    return paths
 
 # Orders of Growth
 def zap(n):
