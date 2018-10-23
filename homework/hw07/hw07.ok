@@ -1,0 +1,33 @@
+{
+    "name": "Homework 7",
+    "endpoint": "cal/cs61a/fa18/hw07",
+    "src": [
+        "hw07.scm"
+    ],
+    "tests": {
+        "tests/cadr-caddr.py": "ok_test",
+        "tests/sign.py": "ok_test",
+        "tests/pow.py": "ok_test",
+        "tests/ordered.py": "ok_test",
+        "tests/add.py": "ok_test",
+        "tests/contains.py": "ok_test",
+        "tests/intersect.py": "ok_test",
+        "tests/union.py": "ok_test",
+        "hw07.py": "doctest"
+    },
+    "default_tests": [
+        "cadr-caddr",
+        "sign",
+        "pow",
+        "ordered",
+        "survey"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "unlock",
+        "backup"
+    ]
+}
