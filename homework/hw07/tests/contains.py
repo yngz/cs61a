@@ -7,29 +7,26 @@ test = {
         {
           'code': r"""
           scm> (contains? odds 3)   ; True or False
-          60c2a5359961375936a02892ac434f71
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           scm> (contains? odds 9)   ; True or False
-          60c2a5359961375936a02892ac434f71
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           scm> (contains? odds 6)   ; True or False
-          30fee613b5f24feb0ea2d5089730e609
-          # locked
+          False
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
