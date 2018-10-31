@@ -7,14 +7,12 @@ test = {
         {
           'code': r"""
           scm> (derive x^2 'x) ; Remember products have the form (* a b)
-          5677b347b03655ed5ba4d637128b074c
-          # locked
+          (* 2 x)
           scm> (derive x^3 'x)
-          0d0ddbcb02925ae809a618030fe91cb0
-          # locked
+          (* 3 (^ x 2))
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

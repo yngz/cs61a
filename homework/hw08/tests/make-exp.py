@@ -7,35 +7,26 @@ test = {
         {
           'code': r"""
           scm> (make-exp 2 4)
-          43fb0199e9e2345f8b8a767d78463c89
-          # locked
+          16
           scm> (make-exp 'x 1)
-          36e066bfc6378b709f8c41ed98771eb2
-          # locked
+          x
           scm> (make-exp 'x 0)
-          38dac9033a8f5e8edb2dbe6428e02d1d
-          # locked
+          1
           scm> x^2
-          37c446142756e6233e39a8a175b02f82
-          # locked
+          (^ x 2)
           scm> (base x^2)
-          36e066bfc6378b709f8c41ed98771eb2
-          # locked
+          x
           scm> (exponent x^2)
-          bec7b0c91bdcb548cda9e9f3546cf0d7
-          # locked
+          2
           scm> (exp? x^2) ; True or False
-          af2fd7905919be94e4d509e8239d5fd1
-          # locked
+          True
           scm> (exp? 1)
-          3cbee9249bf6c5fe6fce86debf3b010a
-          # locked
+          False
           scm> (exp? 'x)
-          3cbee9249bf6c5fe6fce86debf3b010a
-          # locked
+          False
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
