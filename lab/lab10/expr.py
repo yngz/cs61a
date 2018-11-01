@@ -109,7 +109,10 @@ class Name(Expr):
         ...     print('Exception raised!')
         Exception raised!
         """
-        "*** YOUR CODE HERE ***"
+        if self.string in env:
+            return env[self.string]
+        else:
+            raise NameError('name {} is not defined'.format(self.string))
 
     def __str__(self):
         return self.string
@@ -175,7 +178,9 @@ class CallExpr(Expr):
         >>> read('add(mul(3, 4), b)').eval(new_env)
         Number(14)
         """
-        "*** YOUR CODE HERE ***"
+        operator = self.operator.eval(env)
+        operands = [operand.eval(env) for operand in self.operands]
+        return operator.apply(operands)
 
     def __str__(self):
         function = str(self.operator)
