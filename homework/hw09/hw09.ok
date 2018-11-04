@@ -1,0 +1,18 @@
+{
+    "name": "Homework 09",
+    "endpoint": "cal/cs61a/fa18/hw09",
+    "src": [
+        "hw09.scm"
+    ],
+    "tests": {
+        "tests/list-comp.py": "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
