@@ -26,7 +26,7 @@ if __name__ == '__main__':
                     print(repr(expr))
                 else:
                     print(expr.eval(global_env))
-        except (SyntaxError, NameError, TypeError) as err:
+        except (SyntaxError, NameError, TypeError, ZeroDivisionError) as err:
             print(type(err).__name__ + ':', err)
         except (KeyboardInterrupt, EOFError):  # Ctrl-C, Ctrl-D
             print()  # blank line

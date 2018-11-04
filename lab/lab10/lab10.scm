@@ -4,5 +4,5 @@
     (if (zero? n)
         x
         (let
-            (_________________________)
+            ((y (repeatedly-cube (- n 1) x)))
             (* y y y))))
