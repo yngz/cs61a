@@ -1,0 +1,19 @@
+{
+    "name": "Lab 11",
+    "endpoint": "cal/cs61a/fa18/lab11",
+    "src": [
+        "lab11.scm"
+    ],
+    "tests": {
+        "tests/wwsd-macros.py" : "ok_test",
+        "tests/scheme-def.py" : "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
