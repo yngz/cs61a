@@ -1,9 +1,13 @@
 (define (accumulate combiner start n term)
-  'YOUR-CODE-HERE
+        (if (< n 1) start
+            (combiner (term n) (accumulate combiner start (- n 1) term))
+        )
 )
 
 (define (accumulate-tail combiner start n term)
-  'YOUR-CODE-HERE
+        (if (< n 1) start
+            (accumulate-tail combiner (combiner (term n) start) (- n 1) term)
+        )
 )
 
 (define (partial-sums stream)
