@@ -11,10 +11,25 @@
 )
 
 (define (partial-sums stream)
-  'YOUR-CODE-HERE
-  (helper 0 stream)
+  		(define (helper sums stream)
+  				(if (null? stream)
+  					nil
+  					(cons-stream (+ (car stream) sums)
+  								 (helper (+ (car stream) sums) (cdr-stream stream))
+  					)
+  				)
+  		)
+  		(helper 0 stream)
 )
 
 (define (rle s)
-  'YOUR-CODE-HERE
+  		(define (helper prev n stream)
+  				(cond ((null? stream) (cons-stream (list prev n) nil))
+  					  ((= (car stream) prev) (helper prev (+ n 1) (cdr-stream stream)))
+  					  (else (cons-stream (list prev n) (helper (car stream) 0 stream)))
+  				)
+  		)
+  		(if (null? s) nil
+  			(helper (car s) 0 s)
+  		)
 )
