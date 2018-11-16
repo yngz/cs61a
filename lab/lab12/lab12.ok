@@ -1,0 +1,28 @@
+{
+    "name": "Lab 12",
+    "endpoint": "cal/cs61a/fa18/lab12",
+    "src": [
+        "lab12.sql",
+        "lab12_extra.sql"
+    ],
+    "tests": {
+        "tests/obedience.py": "ok_test",
+        "tests/smallest-int.py": "ok_test",
+        "tests/matchmaker.py": "ok_test",
+        "tests/lets-count.py": "ok_test",
+        "tests/smallest-int-count.py": "ok_test"
+    },
+    "default_tests": [
+        "obedience",
+        "smallest-int",
+        "matchmaker"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
