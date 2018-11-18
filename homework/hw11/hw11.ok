@@ -1,0 +1,27 @@
+{
+    "name": "Homework 11",
+    "endpoint": "cal/cs61a/fa18/hw11",
+    "src": [
+        "hw11.sql"
+    ],
+    "tests": {
+        "tests/size_of_dogs.py": "ok_test",
+        "tests/by_parent_height.py": "ok_test",
+        "tests/sentences.py": "ok_test",
+        "tests/stacks.py": "ok_test"
+    },
+    "default_tests": [
+        "size_of_dogs",
+        "by_parent_height",
+        "sentences",
+        "stacks"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
