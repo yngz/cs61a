@@ -1,0 +1,32 @@
+{
+    "name": "Lab 13",
+    "endpoint": "cal/cs61a/fa18/lab13",
+    "src": [
+        "lab13.py",
+        "lab13.scm",
+        "lab13_extra.py",
+        "lab13_extra.scm"
+    ],
+    "tests": {
+        "lab13.py:prune_small": "doctest",
+        "tests/compose-all.py": "ok_test",
+        "lab13_extra.py:num_splits": "doctest",
+        "lab13_extra.py:insert": "doctest",
+        "tests/nodots.py": "ok_test",
+        "tests/has-cycle.py": "ok_test",
+        "tests/has-cycle-constant.py": "ok_test",
+        "tests/switch.py": "ok_test"
+    },
+    "default_tests": [
+        "prune_small",
+        "compose-all"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
