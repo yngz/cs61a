@@ -15,6 +15,7 @@
 )
 
 ; Q7
+; lab07_extra rewritten in Scheme
 (define (has-cycle? s)
   (define (pair-tracker seen-so-far curr)
     (cond ((null? curr) #f)
@@ -32,11 +33,24 @@
 )
 
 (define (has-cycle-constant s)
-  'YOUR-CODE-HERE
+        (define (helper slow fast)
+                (cond ((or (null? fast) (null? (cdr-stream fast))) #f)
+                      ((or (eq? fast slow) (eq? (cdr-stream fast) slow)) #t)
+                      (else (helper (cdr-stream slow) (cdr-stream (cdr-stream fast))))
+                )
+        )
+        (helper s (cdr-stream s))
 )
 
 ; Q8
 (define-macro (switch expr cases)
-    'YOUR-CODE-HERE
+              (let ((val (eval expr)))
+                   (cons 'cond
+                         (map (lambda (case)
+                                      (cons (eq? val (car case)) (cdr case))
+                              )
+                              cases
+                         )
+                   )
+              )
 )
-
