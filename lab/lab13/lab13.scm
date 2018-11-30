@@ -2,5 +2,13 @@
 
 ; Q3
 (define (compose-all funcs)
-  'YOUR-CODE-HERE
+		(define (helper funcs arg)
+				(if (null? funcs) 
+					arg
+					(helper (cdr funcs)
+							((car funcs) arg)
+					)
+				)
+		)
+  		(lambda (x) (helper funcs x))
 )

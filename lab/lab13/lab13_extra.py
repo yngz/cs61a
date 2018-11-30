@@ -14,7 +14,12 @@ def num_splits(s, d):
     >>> num_splits([1, 4, 6, 8, 2, 9, 5], 3)
     12
     """
-    "*** YOUR CODE HERE ***"
+    def helper(s, n):
+        if len(s) == 0:
+            return 1 if abs(n) <= d else 0
+        first, rest = s[0], s[1:]
+        return helper(rest, n+first) + helper(rest, n-first)
+    return helper(s, 0) // 2
 
 # Q5
 def insert(link, value, index):
@@ -32,7 +37,13 @@ def insert(link, value, index):
     >>> insert(link, 4, 5)
     IndexError
     """
-    "*** YOUR CODE HERE ***"
+    if index > len(link) - 1:
+        raise IndexError
+    if index == 0:
+        link.rest = Link(link.first, link.rest)
+        link.first = value
+    else:
+        insert(link.rest, value, index-1)
 
 class Link:
     """A linked list.
